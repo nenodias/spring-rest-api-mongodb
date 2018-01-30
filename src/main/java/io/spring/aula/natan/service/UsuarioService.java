@@ -18,9 +18,16 @@ public class UsuarioService {
 		return usuarioRepository.findAll();
 	}
 
-	public List<Usuario> listaUsuario(Usuario usuario){
-		usuarioRepository.save(usuario);
-		return usuarioRepository.findAll();
+	public Usuario salvarUsuario(Usuario usuario){
+		return usuarioRepository.save(usuario);
+	}
+
+	public void deletarUsuario(String id) {
+		this.usuarioRepository.delete(id);
+	}
+
+	public Usuario consultarUsuario(String id) {
+		return this.usuarioRepository.findOne(id);
 	}
 
 }
