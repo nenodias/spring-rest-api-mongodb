@@ -8,11 +8,18 @@
  */
 package io.spring.aula.natan.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  *
  * @author Nataniel Paiva <nataniel.paiva@gmail.com>
  */
+@Document
 public class Usuario {
+	
+	@Id
+	private String id;
 
     private String nome;
 
@@ -20,7 +27,15 @@ public class Usuario {
 
     private String email;
 
-    public String getNome() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNome() {
         return nome;
     }
 

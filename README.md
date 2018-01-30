@@ -1,17 +1,14 @@
-# Aula 1
- 
- * Introdução ao Spring Framework 
- * Utilizar a última versão do Spring Boot 
- * Configurar o Maven 
- * Rodar o projeto utilizando Tomcat embutido
- * Criar as suas primeiras classes com Spring
- * CDI 
- * Controller 
- * Rest
+# Aula 3
 
-Links para referência
+* Introdução ao MongoDB
+* Criar uma conexão com o MongoDB
+* Spring Data Repositories
+* @Document
+
+Links úteis
 ---
 
-* https://spring.io/
-
-* https://projects.spring.io/spring-boot/
+* https://www.mongodb.com/
+* https://www.mongodb.com/products/compass
+* https://docs.mongodb.com/
+* https://docs.spring.io/spring-data/mongodb/docs/1.10.7.RELEASE/reference/html/
