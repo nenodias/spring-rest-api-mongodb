@@ -40,17 +40,17 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
-	public Usuario listUsuario(@RequestBody Usuario usuario){
+	public Usuario salvar(@RequestBody Usuario usuario){
 		return this.usuarioService.salvarUsuario(usuario);
 	}
 	
 	@RequestMapping(value = "/usuario", method = RequestMethod.PUT)
-	public Usuario editarUsuario(@RequestBody Usuario usuario){
+	public Usuario editar(@RequestBody Usuario usuario){
 		return this.usuarioService.salvarUsuario(usuario);
 	}
 	
 	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.DELETE)
-	public void deletarUsuario(@PathVariable String id){
+	public void deletar(@PathVariable String id){
 		this.usuarioService.deletarUsuario(id);
 	}
 }
