@@ -32,6 +32,20 @@ public class Usuario {
     private int idade;
 
     private String email;
+    
+    private String senha;
+    
+    public Usuario() {
+    	
+    }
+    
+    public Usuario(String nome, List<Perfil> perfis, String email, String senha) {
+    	this.nome = nome;
+    	this.perfis = perfis;
+    	this.email = email;
+    	this.senha = senha;
+    }
+    
 
     public String getId() {
 		return id;
@@ -72,5 +86,13 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 }

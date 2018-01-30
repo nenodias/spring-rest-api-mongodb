@@ -12,3 +12,7 @@ Links úteis
 * https://www.mongodb.com/products/compass
 * https://docs.mongodb.com/
 * https://docs.spring.io/spring-data/mongodb/docs/1.10.7.RELEASE/reference/html/
+
+
+#### Como gerar o header Authorization com o base64 (mobile, 123 do AutorizationServiceConfiguration)
+* https://www.blitter.se/utils/basic-authentication-header-generator/
