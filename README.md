@@ -1,9 +1,10 @@
-# Aula 3
+# Aula 8
 
-* Introdução ao MongoDB
-* Criar uma conexão com o MongoDB
-* Spring Data Repositories
-* @Document
+* Um pouco mais sobre autenticação
+* Configuração de Cors
+* Introdução ao Ionic 
+* NodeJS
+* Cordova
 
 Links úteis
 ---
@@ -12,7 +13,9 @@ Links úteis
 * https://www.mongodb.com/products/compass
 * https://docs.mongodb.com/
 * https://docs.spring.io/spring-data/mongodb/docs/1.10.7.RELEASE/reference/html/
-
+* http://software.dzhuvinov.com/cors-filter-spec.html
+* https://nodejs.org/en/
+* https://ionicframework.com/
 
 #### Como gerar o header Authorization com o base64 (mobile, 123 do AutorizationServiceConfiguration)
 * https://www.blitter.se/utils/basic-authentication-header-generator/
