@@ -14,9 +14,11 @@ import 'rxjs/add/operator/map';
 export class LoginServiceProvider {
   private loginUrl:string;
   public handleError:any;
+  public userUrl:string;
 
   constructor(public http: Http) {
     this.loginUrl = Utils.getUrlBackend() + "oauth/token?grant_type=password&username=";
+    this.userUrl = Utils.getUrlBackend() + "usuario/logado";
   }
 
   public login(usuario: Usuario): Observable<any> {
@@ -30,8 +32,16 @@ export class LoginServiceProvider {
     });
 
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.loginUrl + usuario.email + "&password=" + encodeURIComponent(usuario.senha), {}, options)
+    return this.http.post(this.loginUrl + usuario.email + "&password=" + encodeURIComponent(usuario.senha), "{}", options)
     .map(res => res.json());
   }
 
+  public getUsuarioAtual(token:any) {
+    let headers = new Headers({
+      "Authorization": "Bearer "+token
+    });
+
+    let options = new RequestOptions({ headers:headers });
+    return this.http.get(this.userUrl, options).map(res => res.json());
+  }
 }

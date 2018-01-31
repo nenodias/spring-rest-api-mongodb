@@ -42,4 +42,8 @@ public class UsuarioService {
 		return this.usuarioRepository.findOne(id);
 	}
 
+	public Usuario buscarPorEmail(String email) {
+		return this.usuarioRepository.findByEmail(email);
+	}
+
 }

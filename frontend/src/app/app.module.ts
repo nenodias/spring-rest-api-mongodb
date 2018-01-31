@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { CookieService } from 'angular2-cookie/core';
 import { ComponenteInicial } from './app.component';
 import { LoginPageModule } from './../pages/login/login.module';
 
@@ -39,6 +40,7 @@ import { Http, HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    CookieService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginServiceProvider
   ]
