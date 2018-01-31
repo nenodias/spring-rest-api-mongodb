@@ -22,7 +22,8 @@ public class ResourcesServerConfiguration extends ResourceServerConfigurerAdapte
 			.invalidateHttpSession(true)
 			.clearAuthentication(true)
 			.and().authorizeRequests()
-			.antMatchers(HttpMethod.GET, "/usuario/**").hasAnyRole("ADMIN")
+			.antMatchers("/perfil/**").hasAnyRole("ADMIN")
+            .antMatchers(HttpMethod.GET,"/usuario/**").hasAnyRole("ADMIN")
 			.anyRequest().denyAll()
 		;
 	}
