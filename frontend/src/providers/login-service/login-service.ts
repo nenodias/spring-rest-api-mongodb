@@ -13,22 +13,23 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LoginServiceProvider {
   private loginUrl:string;
+  private refreshUrl:string;
   public handleError:any;
   public userUrl:string;
+  static clientLogin:string = "mobile";
+  static clientPassword:string = "123";
 
   constructor(public http: Http) {
     this.loginUrl = Utils.getUrlBackend() + "oauth/token?grant_type=password&username=";
+    this.refreshUrl = Utils.getUrlBackend() + "oauth/token?grant_type=refresh_token&refresh_token=";
     this.userUrl = Utils.getUrlBackend() + "usuario/logado";
   }
 
   public login(usuario: Usuario): Observable<any> {
     this.loginUrl + usuario.email + "&password=" + encodeURIComponent(usuario.senha);
-    
-    let clientLogin = "mobile";
-    let clientPassword = "123";
 
     let headers = new Headers({
-      "Authorization": "Basic " + btoa(clientLogin+":"+clientPassword)
+      "Authorization": "Basic " + btoa(LoginServiceProvider.clientLogin+":"+LoginServiceProvider.clientPassword)
     });
 
     let options = new RequestOptions({ headers: headers });
@@ -43,5 +44,15 @@ export class LoginServiceProvider {
 
     let options = new RequestOptions({ headers:headers });
     return this.http.get(this.userUrl, options).map(res => res.json());
+  }
+
+  public getAccessToken(refreshToken:any){
+    let headers = new Headers({
+      "Authorization": "Basic " + btoa(LoginServiceProvider.clientLogin+":"+LoginServiceProvider.clientPassword)
+    });
+
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.refreshUrl + refreshToken, "{}", options)
+    .map(res => res.json());
   }
 }

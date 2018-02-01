@@ -1,23 +1,23 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { PerfilPage } from './../pages/perfil/perfil';
+import { InterceptorHttpService } from './../providers/InterceptorHttpService';
 import { CookieService } from 'angular2-cookie/core';
 import { Utils } from './../entity/Utils';
-import { ComponenteInicial } from './app.component';
+import { Http, HttpModule } from '@angular/http';
 import { LoginPageModule } from './../pages/login/login.module';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicApp, IonicModule, IonicErrorHandler, Events } from 'ionic-angular';
+import { ComponenteInicial } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { PerfilPage } from '../pages/perfil/perfil';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
-import { Http, HttpModule } from '@angular/http';
-import { PerfilServiceProvider } from '../providers/perfil-service/perfil-service';
 import { XHRBackend, RequestOptions } from '@angular/http';
-import { InterceptorHttpService } from './../providers/InterceptorHttpService';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,9 +26,11 @@ import { InterceptorHttpService } from './../providers/InterceptorHttpService';
     PerfilPage,
     HomePage,
     TabsPage
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     LoginPageModule,
     IonicModule.forRoot(ComponenteInicial)
@@ -40,6 +42,7 @@ import { InterceptorHttpService } from './../providers/InterceptorHttpService';
     PerfilPage,
     HomePage,
     TabsPage
+
   ],
   providers: [
     StatusBar,
@@ -47,15 +50,11 @@ import { InterceptorHttpService } from './../providers/InterceptorHttpService';
     SplashScreen,
     Utils,
     {
-      provide: Http,
-      useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
-        return new InterceptorHttpService(backend, defaultOptions);
-      },
-      deps: [XHRBackend, RequestOptions]
+      provide:HTTP_INTERCEPTORS, useClass: InterceptorHttpService, multi: true
     }
     ,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

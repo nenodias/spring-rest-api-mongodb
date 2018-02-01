@@ -19,13 +19,13 @@ export class PerfilPage {
   public perfis:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public perfilService:PerfilServiceProvider) {
+    
+  }
+
+  ionViewWillEnter() {
     this.perfilService.getPerfis().subscribe(
       response => this.perfis = response
     );
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
   }
 
 }

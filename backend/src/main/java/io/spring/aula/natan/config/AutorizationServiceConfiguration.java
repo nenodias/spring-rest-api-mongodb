@@ -44,8 +44,8 @@ public class AutorizationServiceConfiguration extends AuthorizationServerConfigu
 		clients.inMemory()
 			.withClient("mobile")
 			.authorizedGrantTypes("password","authorization_code", "refresh_token").scopes("bar", "read", "write")
-			.refreshTokenValiditySeconds(20000)
-			.accessTokenValiditySeconds(20000)
+			.refreshTokenValiditySeconds(86000)
+			.accessTokenValiditySeconds(30)
 			.resourceIds(REST_SERVICE_ID)
 			.secret("123")
 		;

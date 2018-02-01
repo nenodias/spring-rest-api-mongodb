@@ -53,7 +53,7 @@ export class LoginPage {
   public loginSuccess(res:any) {
     this.cookieService.removeAll();
     this.cookieService.put("accessToken", res.access_token);
-    this.requestOptions.headers.set("Authorization", "Bearer "+res.access_token);
+    this.cookieService.put("refreshToken", res.refresh_token);
     this.loginService.getUsuarioAtual(res.access_token).subscribe(
         res => this.redirectPage(res)
     );
@@ -67,7 +67,7 @@ export class LoginPage {
   redirectUser(response) {
     this.cookieService.removeAll();
     this.cookieService.put("accessToken", response.access_token);
-    this.requestOptions.headers.set("Authorization", "Bearer "+response.access_token);
+    this.cookieService.put("refreshToken", response.refresh_token);
   }
 
 }
